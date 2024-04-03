@@ -12,7 +12,7 @@ public class GDCApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(GDCApplication.class.getResource("View.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("GenDataClient");
+        stage.setTitle("GCD v1.0");
         stage.setScene(scene);
         stage.show();
     }
