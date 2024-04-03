@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="415.0" maxWidth="1200.0" minHeight="800.0" minWidth="1200.0" prefHeight="1000.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gabkt.gdc.controllers.CepController">
+    <children>
+        <Label layoutX="42.0" layoutY="72.0" text="CEP:">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <TextField fx:id="inputCep" layoutX="95.0" layoutY="71.0" prefHeight="24.0" prefWidth="197.0" />
+        <Button fx:id="submitCep" layoutX="311.0" layoutY="71.0" mnemonicParsing="false" onAction="#submitCepAction" text="Procurar endereço">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+        <TableView fx:id="tableViewCep" layoutX="42.0" layoutY="141.0" prefHeight="63.0" prefWidth="1033.0">
+            <columns>
+                <TableColumn fx:id="columnRua" prefWidth="436.0" text="Rua" />
+                <TableColumn fx:id="columnBairro" minWidth="0.0" prefWidth="208.0" text="Bairro" />
+                <TableColumn fx:id="columnCidadeES" minWidth="0.0" prefWidth="198.0" text="Cidade/Estado" />
+                <TableColumn fx:id="columnCep" minWidth="0.0" prefWidth="115.0" text="CEP" />
+            </columns>
+            <style>
+                <String fx:value="-fx-alignment: CENTER;" />
+            </style>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+        </TableView>
+      <TextField layoutX="179.0" layoutY="287.0" />
+      <TextField layoutX="519.0" layoutY="287.0" prefHeight="24.0" prefWidth="155.0" />
+      <TextField layoutX="153.0" layoutY="353.0" prefHeight="24.0" prefWidth="197.0" />
+      <TextField layoutX="450.0" layoutY="353.0" prefHeight="24.0" prefWidth="217.0" />
+      <TextField layoutX="785.0" layoutY="287.0" prefHeight="24.0" prefWidth="197.0" />
+      <TextField layoutX="179.0" layoutY="423.0" />
+      <TextField layoutX="527.0" layoutY="423.0" prefHeight="24.0" prefWidth="143.0" />
+      <TextField layoutX="773.0" layoutY="353.0" prefHeight="24.0" prefWidth="209.0" />
+      <TextField layoutX="87.0" layoutY="481.0" prefHeight="24.0" prefWidth="262.0" />
+      <TextField layoutX="430.0" layoutY="473.0" prefHeight="24.0" prefWidth="240.0" />
+      <TextArea layoutX="725.0" layoutY="477.0" prefHeight="200.0" prefWidth="357.0" />
+      <Label layoutX="41.0" layoutY="291.0" text="Dia da Instalação">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="369.0" layoutY="291.0" text="Dia do Vencimento">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="724.0" layoutY="291.0" text="Email">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="44.0" layoutY="357.0" text="Telefone 1">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="369.0" layoutY="357.0" text="Telefone 2">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="725.0" layoutY="357.0" text="Mãe">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="44.0" layoutY="427.0" text="Nome Completo">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="372.0" layoutY="427.0" text="Data de Nascimento">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="44.0" layoutY="485.0" text="CPF">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="377.0" layoutY="477.0" text="RG">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="725.0" layoutY="427.0" text="Complemento ou Ponto de Referência">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="215.0" layoutY="566.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="344.0" text="Gerar Registro no Bloco de Notas">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+    </children>
+</AnchorPane>
