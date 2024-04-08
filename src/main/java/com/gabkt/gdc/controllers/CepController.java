@@ -6,15 +6,15 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDate;
+import java.awt.Desktop;
 
 public class CepController{
     @FXML
@@ -54,12 +54,15 @@ public class CepController{
     @FXML
     private TextField txtRG;
     @FXML
-    private TextArea txtComplemento;
+    private TextField txtComplemento;
     @FXML
     private Button btnPath;
     @FXML
     private Label pathLabel;
-    @FXML Button btnRegister;
+    @FXML
+    private Button btnRegister;
+    @FXML
+    private ImageView imageView;
     @FXML
     private void submitCepAction(){
             Integer cepNumber = Integer.parseInt(inputCep.getText());
@@ -121,34 +124,63 @@ public class CepController{
                     txtCPF.clear();
                     txtRG.clear();
                     txtComplemento.clear();
-        } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());;
+            Desktop.getDesktop().open(selectedFile);        
+        } catch (FileNotFoundException e) {
+            Alert alerta = new Alert(Alert.AlertType.ERROR);
+            alerta.setTitle("Erro");
+            alerta.setHeaderText("");
+            alerta.setContentText("Por favor selecione um Bloco de Notas");
+            alerta.showAndWait();
+        } catch (IOException e){
+            Alert a = new Alert(Alert.AlertType.ERROR, e.getMessage());
+            a.setTitle("Erro");
+            a.setHeaderText("");
+            a.setContentText("Error: " + e.getMessage());
+            a.showAndWait();
         }
     }
 
-    private static String formatNote(Cliente cliente){
+    private String formatNote(Cliente cliente){
+        String rua = "";
+        String bairro= "";
+        String cidadeES= "";
+        for (Cep obj : tableViewCep.getItems()) {
+            rua = columnRua.getCellData(obj);
+            bairro = columnBairro.getCellData(obj);
+            cidadeES = columnCidadeES.getCellData(obj);
+        }
         StringBuilder bloco  = new StringBuilder();
-        bloco.append("Nome: ").append(cliente.getNome()).append("\n");
-        bloco.append("CPF: ").append(cliente.getCpf()).append("\n");
-        bloco.append("RG: ").append(cliente.getRg()).append("\n");
-        bloco.append("Data de Nascimento: ").append(cliente.getDataNasc()).append("\n");
-        bloco.append("Mae: ").append(cliente.getMae()).append("\n");
         bloco.append("\n");
+        bloco.append("Nome: ").append(cliente.getNome()).append("\n");
         bloco.append("Telefone 1: ").append(cliente.getTelefone1()).append("\n");
         bloco.append("Telefone 2: ").append(cliente.getTelefone2()).append("\n");
         bloco.append("Email: ").append(cliente.getEmail()).append("\n");
         bloco.append("Dia da Instalação: ").append(cliente.getDiaInstala()).append("\n");
         bloco.append("Dia do Vencimento: ").append(cliente.getDiaVenci()).append("\n");
         bloco.append("\n");
-        bloco.append("Cep: ").append("").append("\n");
-        bloco.append("Complemento: ").append(cliente.getComplemento()).append("\n");
+        bloco.append("CPF: ").append(cliente.getCpf()).append("\n");
+        bloco.append("RG: ").append(cliente.getRg()).append("\n");
+        bloco.append("Data de Nascimento: ").append(cliente.getDataNasc()).append("\n");
+        bloco.append("Mae: ").append(cliente.getMae()).append("\n");
+        bloco.append("\n");
+        bloco.append("Cep: ").append(inputCep.getText()).append("\n");
+        bloco.append("Numero/Complemento: ").append(cliente.getComplemento()).append("\n");
+        bloco.append("Rua: ").append(rua).append("\n");
+        bloco.append("Bairro: ").append(bairro).append("\n");
+        bloco.append("Cidade/Estado: ").append(cidadeES).append("\n");
         bloco.append("HP: ").append("\n");
+        bloco.append("\n");
         bloco.append("Proposta: ").append("\n");
         bloco.append("Contrato: ").append("\n");
         LocalDate localDate = LocalDate.now();
-        bloco.append("Data da venda: ").append(localDate).append("\n");
+        bloco.append("Data da Venda: ").append(localDate).append("\n");
+        bloco.append("Status da Venda: ").append("\n");
         bloco.append("-------------------------------------------------------------------------").append("\n");
 
         return bloco.toString();
+    }
+    public void initialize() throws IOException {
+        Image image = new Image("pikachu.gif");
+        imageView.setImage(image);
     }
 }

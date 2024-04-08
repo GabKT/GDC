@@ -5,12 +5,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="735.0" maxWidth="1200.0" minHeight="575.0" minWidth="1200.0" prefHeight="606.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gabkt.gdc.controllers.CepController">
+<AnchorPane prefHeight="578.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gabkt.gdc.controllers.CepController">
     <children>
         <Label layoutX="45.0" layoutY="55.0" text="CEP:">
             <font>
@@ -46,7 +46,7 @@
       <TextField fx:id="txtMae" layoutX="414.0" layoutY="428.0" prefHeight="25.0" prefWidth="329.0" />
       <TextField fx:id="txtCPF" layoutX="807.0" layoutY="255.0" prefHeight="25.0" prefWidth="336.0" />
       <TextField fx:id="txtRG" layoutX="799.0" layoutY="319.0" prefHeight="25.0" prefWidth="344.0" />
-      <TextArea fx:id="txtComplemento" layoutX="775.0" layoutY="427.0" prefHeight="138.0" prefWidth="368.0" />
+      <TextField fx:id="txtComplemento" layoutX="772.0" layoutY="428.0" prefHeight="25.0" prefWidth="368.0" />
       <Label layoutX="43.0" layoutY="256.0" text="Dia da Instalação">
          <font>
             <Font size="14.0" />
@@ -97,7 +97,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="775.0" layoutY="376.0" text="Complemento ou Ponto de Referência">
+      <Label layoutX="775.0" layoutY="379.0" text="Numero/Complemento/Ponto de Referência">
          <font>
             <Font size="14.0" />
          </font>
@@ -107,7 +107,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Label layoutX="47.0" layoutY="521.0" prefHeight="44.0" prefWidth="309.0" text="Boas Vendas!!!" textAlignment="RIGHT">
+      <Label layoutX="42.0" layoutY="499.0" prefHeight="44.0" prefWidth="309.0" text="Boas Vendas!!!" textAlignment="RIGHT">
          <font>
             <Font name="SansSerif Regular" size="36.0" />
          </font>
@@ -122,10 +122,11 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="btnRegister" layoutX="374.0" layoutY="491.0" mnemonicParsing="false" onAction="#registerForm" prefHeight="74.0" prefWidth="368.0" text="Registrar">
+      <Button fx:id="btnRegister" layoutX="772.0" layoutY="484.0" mnemonicParsing="false" onAction="#registerForm" prefHeight="74.0" prefWidth="368.0" text="Registrar">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
+      <ImageView fx:id="imageView" fitHeight="83.0" fitWidth="229.0" layoutX="455.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true" />
     </children>
 </AnchorPane>

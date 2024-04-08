@@ -12,6 +12,7 @@ module com.gabkt.gdc {
     requires com.almasb.fxgl.all;
     requires spring.web;
     requires com.fasterxml.jackson.annotation;
+    requires java.desktop;
 
     opens com.gabkt.gdc.controllers to javafx.fxml;
     opens com.gabkt.gdc.model to com.fasterxml.jackson.databind, javafx.base;

@@ -1,0 +1,25 @@
+.button{
+    -fx-color: #2b2948;
+    -fx-text-fill: #FFFFFF;
+}
+.text-field{
+    -fx-background-color: #4c538e;
+    -fx-text-fill: #FFFFFF;
+}
+.label{
+    -fx-text-fill: #FFFFFF;
+}
+.table-view{
+    -fx-background-color: #2b2948;
+}
+.table-column{
+    -fx-background-color: #232140;
+}
+.table-cell{
+    -fx-background-color: #4c538e;
+    -fx-text-fill: #FFFFFF;
+}
+
+.root{
+    -fx-background-color: #5f69bc;
+}
