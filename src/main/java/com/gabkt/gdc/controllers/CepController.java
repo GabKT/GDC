@@ -2,6 +2,7 @@ package com.gabkt.gdc.controllers;
 
 import com.gabkt.gdc.model.Cep;
 import com.gabkt.gdc.model.Cliente;
+import com.gabkt.gdc.services.AlertsServices;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -15,6 +16,8 @@ import org.springframework.web.client.RestTemplate;
 import java.io.*;
 import java.time.LocalDate;
 import java.awt.Desktop;
+
+import static com.gabkt.gdc.services.RegexService.removeSpecialCharacters;
 
 public class CepController{
     @FXML
@@ -65,12 +68,10 @@ public class CepController{
     private ImageView imageView;
     @FXML
     private void submitCepAction(){
-            Integer cepNumber = Integer.parseInt(inputCep.getText());
-            String url = String.format("https://viacep.com.br/ws/%d/json/", cepNumber);
-            System.out.println(url);
+            String cepNumber = removeSpecialCharacters(inputCep.getText());
+            String url = String.format("https://viacep.com.br/ws/%s/json/", cepNumber);
             RestTemplate restTemplate = new RestTemplate();
             Cep cep = restTemplate.getForObject(url, Cep.class);
-            System.out.println(cep);
             if(cep != null){
                 columnRua.setCellValueFactory(new PropertyValueFactory<>("logradouro"));
                 columnBairro.setCellValueFactory(new PropertyValueFactory<>("bairro"));
@@ -96,11 +97,11 @@ public class CepController{
 
         File selectedFile = fileChooser.showOpenDialog(stage);
 
-        if(selectedFile != null){
-            System.out.println("Arquivo: " + selectedFile.getAbsolutePath());
+        if(selectedFile != null && selectedFile.isFile() && selectedFile.getName().toLowerCase().endsWith(".txt")){
             pathLabel.setText("Bloco selecionado: " + selectedFile.getAbsolutePath());
         } else {
-            System.out.println("nothing selected");
+            Alert alert = AlertsServices.createAlertError("Erro", "Erro ao selecionar seu bloco de notas");
+            alert.showAndWait();
         }
     }
     @FXML
@@ -126,17 +127,11 @@ public class CepController{
                     txtComplemento.clear();
             Desktop.getDesktop().open(selectedFile);        
         } catch (FileNotFoundException e) {
-            Alert alerta = new Alert(Alert.AlertType.ERROR);
-            alerta.setTitle("Erro");
-            alerta.setHeaderText("");
-            alerta.setContentText("Por favor selecione um Bloco de Notas");
+            Alert alerta = AlertsServices.createAlertError("Erro","Por favor selecione um Bloco de Notas");
             alerta.showAndWait();
         } catch (IOException e){
-            Alert a = new Alert(Alert.AlertType.ERROR, e.getMessage());
-            a.setTitle("Erro");
-            a.setHeaderText("");
-            a.setContentText("Error: " + e.getMessage());
-            a.showAndWait();
+            Alert alert = AlertsServices.createAlertError("Erro", e.getMessage());
+            alert.showAndWait();
         }
     }
 
